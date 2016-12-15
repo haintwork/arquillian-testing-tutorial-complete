@@ -4,10 +4,24 @@
     xsi:schemaLocation="
         http://www.jboss.org/ironjacamar/schema
         http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
-    <datasource enabled="true"
+    <datasource enabled="false"
         jndi-name="jdbc/arquillian"
         pool-name="ArquillianEmbeddedH2Pool">
         <connection-url>jdbc:h2:mem:arquillian;DB_CLOSE_DELAY=-1</connection-url>
         <driver>h2</driver>
+    </datasource>
+    <datasource jta="true" jndi-name="java:/jpatestdb" pool-name="jpatestdb" enabled="true" use-ccm="true">
+        <connection-url>jdbc:mysql://localhost:3306/jpatestdb</connection-url>
+        <driver-class>com.mysql.jdbc.Driver</driver-class>
+        <driver>mysql-connector-java-5.1.34-bin.jar_com.mysql.jdbc.Driver_5_1</driver>
+        <security>
+            <user-name>root</user-name>
+            <password>root</password>
+        </security>
+        <validation>
+            <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+            <background-validation>true</background-validation>
+            <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+        </validation>
     </datasource>
 </datasources>

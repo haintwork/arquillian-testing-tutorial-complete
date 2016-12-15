@@ -23,10 +23,19 @@
         </configuration>
     </container>
     
-    <container qualifier="wildfly-10-managed" default="true">
+    <container qualifier="wildfly-10-embedded" >
         <configuration>
             <property name="jbossHome">target/wildfly-10.0.0.Final</property>
             <property name="modulePath">target/wildfly-10.0.0.Final/modules/system/layers/base</property>
+            <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m -Xverify:none -XX:+UseFastAccessorMethods</property>
+            <property name="outputToConsole">true</property>
+        </configuration>
+    </container>
+    
+    <container qualifier="wildfly-8-embedded" default="true">
+        <configuration>
+            <property name="jbossHome">target/wildfly-8.0.0.Final</property>
+            <property name="modulePath">target/wildfly-8.0.0.Final/modules/system/layers/base</property>
             <property name="javaVmArguments">-Xmx512m -XX:MaxPermSize=128m -Xverify:none -XX:+UseFastAccessorMethods</property>
             <property name="outputToConsole">true</property>
         </configuration>
